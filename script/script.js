@@ -8,11 +8,13 @@ let resetScore = document.getElementById('resetScore');
 let players = [];
 
 if (localStorage.getItem('leaderboardData')) {
+   
     players = JSON.parse(localStorage.getItem('leaderboardData'))
     populateLeaderboard();
 } else {
     players = [];
 }
+
 
 resetScore.addEventListener('click', function () {
     for (let player of players) {
@@ -24,6 +26,7 @@ resetScore.addEventListener('click', function () {
 
 consoleLogBtn.addEventListener('click', function () {
     console.log(players);
+   
 });
 
 deleteData.addEventListener('click', function () {
@@ -32,6 +35,7 @@ deleteData.addEventListener('click', function () {
 });
 
 inputContestant.addEventListener('keypress', function (e) {
+    
     if (e.keyCode === 13) {
         let obj = {
             name: e.target.value,
@@ -85,6 +89,7 @@ function populateLeaderboard() {
 
 function saveData() {
     localStorage.setItem('leaderboardData', JSON.stringify(players));
+    
 }
 
 function sortPlayers() {
