@@ -6,6 +6,7 @@ let leaderBoard = document.getElementById('leaderBoard')
 let button = document.getElementById('button');
 let resetScore = document.getElementById('resetScore');
 let players = [];
+
 if (localStorage.getItem('leaderboardData')) {
     players = JSON.parse(localStorage.getItem('leaderboardData'))
     populateLeaderboard();
@@ -13,19 +14,13 @@ if (localStorage.getItem('leaderboardData')) {
     players = [];
 }
 
-
-
 resetScore.addEventListener('click', function () {
     for (let player of players) {
         player.score = 0;
     }
-
     saveData();
     populateLeaderboard();
 });
-
-
-
 
 consoleLogBtn.addEventListener('click', function () {
     console.log(players);
@@ -50,10 +45,9 @@ inputContestant.addEventListener('keypress', function (e) {
 });
 
 function populateLeaderboard() {
-    leaderBoard.innerHTML="";
+    leaderBoard.innerHTML = "";
 
     for (let i = 0; i < players.length; i++) {
-        
         let row = document.createElement('div');
         let col1 = document.createElement('div');
         let col2 = document.createElement('div');
@@ -61,9 +55,6 @@ function populateLeaderboard() {
         let name = document.createElement('p');
         let score = document.createElement('p');
         let button = document.createElement('p');
-
-
-
 
         row.setAttribute('class', 'row');
         col1.setAttribute('class', 'col');
@@ -78,13 +69,9 @@ function populateLeaderboard() {
         button.addEventListener('click', function () {
             players[i].score++
             players.sort((a, b) => (a.score <= b.score) ? 1 : -1)
-
             saveData();
             populateLeaderboard();
-
-
         });
-
 
         col1.appendChild(button);
         col2.appendChild(name);
@@ -101,7 +88,7 @@ function saveData() {
 }
 
 function sortPlayers() {
-    
+
 }
 
 
